@@ -53,7 +53,6 @@
             emit-value
             class="col"
             ref="atribuidor"
-            :rules="[val => !!val || 'Campo obrigatório']"
           >
             <template v-slot:option="scope">
               <q-item v-bind="scope.itemProps" v-on="scope.itemEvents">
@@ -71,7 +70,11 @@
 
           <div class="q-pa-md">
             <div class="q-gutter-sm">
-              <q-checkbox v-model="naoAtribuir" label="Não Atribuir" />
+              <q-checkbox
+                v-model="naoAtribuir"
+                label="Não Atribuir"
+                @input="(d) => !d ? setOptions() : ''"
+              />
             </div>
           </div>
         </div>
@@ -79,7 +82,14 @@
 
       <q-card-actions align="right">
         <q-btn flat label="Cancelar" no-caps v-close-popup />
-        <q-btn color="blue" rounded label="Adicionar" no-caps type="submit" />
+        <q-btn
+          color="blue"
+          rounded
+          label="Adicionar"
+          no-caps
+          type="submit"
+          :disable="tarefaForm.titulo === '' || tarefaForm.data_vencimento === ''"
+        />
       </q-card-actions>
     </form>
   </q-card>
@@ -108,8 +118,10 @@ export default {
   methods: {
     ...mapActions("gerenciadortarefa", ["getAtribuidores", "adicionarTarefa"]),
     async setOptions() {
-      await this.getAtribuidores();
-      this.atribuidoresOptions = this.atribuidores;
+      if (this.atribuidoresOptions.length === 0) {
+        await this.getAtribuidores();
+        this.atribuidoresOptions = this.atribuidores;
+      }
     },
     submitForm() {
       this.$refs.titulo.validate();
@@ -140,7 +152,7 @@ export default {
     }
   },
   async created() {
-    await this.setOptions();
+    // await this.setOptions();
   }
 };
 </script>

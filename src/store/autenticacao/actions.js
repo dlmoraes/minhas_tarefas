@@ -10,16 +10,37 @@ export function setLoggedIn({ commit }, payload) {
   LocalStorage.set("loggedIn", payload);
 }
 
-export function setAvatar({ commit }, payload) {
-  commit("setAvatar", payload.avatar);
+export function setAvatar({}, payload) {
+  //commit("setAvatar", payload);
+  let user = LocalStorage.getItem("user");
+  user.avatar = payload.avatar;
+  LocalStorage.set("user", user);
 }
 
-export function setUser({ commit }, payload) {
+export function setUser({}, payload) {
   let user = {
+    username: payload.username,
     token: payload.token,
     avatar: payload.avatar
   };
   LocalStorage.set("user", user);
+}
+
+export function getAvatar({}) {
+  return new Promise((resolve, reject) => {
+    request({
+      url: "/users/avatar/",
+      method: "post",
+      data: payload
+    })
+      .then(response => {
+        resolve(response);
+        dispatch("setAvatar", response);
+      })
+      .catch(error => {
+        reject(error);
+      });
+  });
 }
 
 export function loginUsuario({ dispatch }, payload) {
@@ -32,10 +53,9 @@ export function loginUsuario({ dispatch }, payload) {
       .then(response => {
         resolve(response);
         dispatch("setLoggedIn", true);
-        dispatch("setAvatar", response);
         dispatch("setUser", response);
 
-        this.$router.push("/tarefas");
+        this.$router.push("/");
       })
       .catch(error => {
         this.$router.replace("/autenticacao");
@@ -46,6 +66,6 @@ export function loginUsuario({ dispatch }, payload) {
 
 export function logout({ commit }, payload) {
   commit("setLoggedIn", false);
-  commit("setAvatar", null);
   LocalStorage.remove("user");
+  this.$router.replace("/autenticacao");
 }

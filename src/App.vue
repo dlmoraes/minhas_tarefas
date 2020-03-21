@@ -13,8 +13,8 @@ export default {
     ...mapActions("configuracao", ["getSettings", "saveSettings"])
   },
   mounted() {
-    this.saveSettings();
-    this.getSettings();
+    //this.saveSettings();
+    //this.getSettings();
   }
 };
 </script>
@@ -28,4 +28,3 @@ body {
   background: #fff;
 }
 </style>
-

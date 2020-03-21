@@ -31,42 +31,29 @@
         />
 
         <q-item>
-          <q-item-section class="titulo_tarefa col-11">{{
+          <q-item-section class="titulo_tarefa col-11">
+            {{
             tarefa.titulo
-          }}</q-item-section>
+            }}
+          </q-item-section>
         </q-item>
 
-        <AreaSolicitante
-          :tarefa="tarefa"
-          :get-tempo-vencimento="getTempoVencimento"
-        />
+        <AreaSolicitante :tarefa="tarefa" :get-tempo-vencimento="getTempoVencimento" />
 
         <q-separator />
 
-        <CabecalhoItensPainelDireito
-          rotulo="Detalhes"
-          icone="fas fa-align-left"
-        />
+        <CabecalhoItensPainelDireito rotulo="Detalhes" icone="fas fa-align-left" />
 
         <DetalhesSumario rotulo="Código" :valor="tarefa.id" />
-        <DetalhesSumario
-          rotulo="Solicitado em"
-          :valor="tarefa.created_at | dataFormatada"
-        />
+        <DetalhesSumario rotulo="Solicitado em" :valor="tarefa.created_at | dataFormatada" />
 
         <q-separator />
 
-        <CabecalhoItensPainelDireito
-          rotulo="Evidências"
-          icone="fas fa-paperclip"
-        />
+        <CabecalhoItensPainelDireito rotulo="Evidências" icone="fas fa-paperclip" />
 
         <Evidencias :evidencias="tarefa.evidencias" :tarefa_id="tarefa.id" />
 
-        <CabecalhoItensPainelDireito
-          rotulo="Comentários"
-          icone="fas fa-comments"
-        />
+        <CabecalhoItensPainelDireito rotulo="Comentários" icone="fas fa-comments" />
 
         <q-separator class="separador_comentario" />
 
@@ -176,7 +163,7 @@ export default {
     position: absolute;
     display: block;
     top: 50%;
-    margin-left: -20px;
+    margin-left: -30px;
     border: #258ffc solid 1px;
     border-radius: 100%;
     color: white;

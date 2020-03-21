@@ -71,7 +71,11 @@
 
           <div class="q-pa-md">
             <div class="q-gutter-sm">
-              <q-checkbox v-model="naoAtribuir" label="Não Atribuir" />
+              <q-checkbox
+                v-model="naoAtribuir"
+                label="Não Atribuir"
+                @input="(d) => d ? setOptions() : ''"
+              />
             </div>
           </div>
         </div>
@@ -79,7 +83,15 @@
 
       <q-card-actions align="right">
         <q-btn flat label="Cancelar" no-caps v-close-popup />
-        <q-btn color="blue" rounded label="Editar" no-caps type="submit" v-close-popup />
+        <q-btn
+          color="blue"
+          rounded
+          label="Editar"
+          no-caps
+          type="submit"
+          v-close-popup
+          :disable="tarefaForm.titulo === '' || tarefaForm.data_vencimento === ''"
+        />
       </q-card-actions>
     </form>
   </q-card>
@@ -153,7 +165,7 @@ export default {
   },
   async created() {
     this.setTarefa();
-    await this.setOptions();
+    //await this.setOptions();
   }
 };
 </script>

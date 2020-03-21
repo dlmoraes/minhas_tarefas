@@ -155,19 +155,18 @@ export default {
     color: rgba(255, 255, 255, 0.5);
     margin-top: 60px;
 
+    .custom_icone_menu {
+      filter: opacity(60%);
+    }
+
     &:hover {
       background: #138bfe;
       border-radius: 32px;
       width: 100%;
-    }
-  }
 
-  .custom_icone_menu {
-    filter: opacity(60%);
-
-    &:hover {
-      background: #138bfe;
-      border-radius: 32px;
+      .custom_icone_menu {
+        filter: opacity(100%);
+      }
     }
   }
 
@@ -177,14 +176,14 @@ export default {
     border-left: #fff solid 3px;
     color: #fff;
 
+    .custom_icone_menu {
+      filter: opacity(100%);
+    }
+
     &:hover {
       background: #138bfe;
       border-left: none;
     }
-  }
-
-  .item_menu_ativo:before {
-    /*animation: rect-anim-right ease-in-out 2s infinite alternate;*/
   }
 
   .menu_scroll {

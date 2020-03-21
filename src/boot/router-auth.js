@@ -9,7 +9,9 @@ export default ({ store, router }) => {
     } else if (!loggedIn && to.path !== "/autenticacao") {
       next("/autenticacao");
     } else {
-      store.dispatch("autenticacao/setAvatar", user);
+      if (user && !user.avatar) {
+        store.dispatch("autenticacao/getAvatar");
+      }
       next();
     }
   });
