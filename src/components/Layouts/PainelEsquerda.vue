@@ -171,7 +171,7 @@ export default {
   }
 
   .item_menu_ativo {
-    margin-top: 20px;
+    margin-top: 60px;
     margin-bottom: 20px;
     border-left: #fff solid 3px;
     color: #fff;

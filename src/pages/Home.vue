@@ -15,103 +15,99 @@
     </q-toolbar>
 
     <TodasTarefas :tarefas="tarefasHoje" classe="tarefas_hoje" rotulo="Hoje" />
-    <TodasTarefas :tarefas="proximasTarefas" classe="proximas_tarefas" rotulo="Próximas" />
-
+    <TodasTarefas
+      :tarefas="proximasTarefas"
+      classe="proximas_tarefas"
+      rotulo="Próximas"
+    />
   </q-page>
 </template>
 
 <script>
-  import {date} from 'quasar';
-  import { mapGetters } from 'vuex'
-  import TodasTarefas from "../components/Tarefas/TodasTarefas";
-  import GooeyBotao from "../components/Botoes/GooeyBotao";
+import { date } from "quasar";
+import { mapGetters } from "vuex";
+import TodasTarefas from "../components/Tarefas/TodasTarefas";
+import GooeyBotao from "../components/Botoes/GooeyBotao";
 
-
-  export default {
-    name: "Home",
-    components: {
-      TodasTarefas,
-      GooeyBotao
-    },
-    data() {
-      return {
-      }
-    },
-    computed: {
-      ...mapGetters('gerenciadortarefa', ['tarefasHoje', 'proximasTarefas'])
-    },
-    filters: {
-      formataData(value) {
-        return date.formatDate(value, 'MMM D')
-      }
+export default {
+  name: "Home",
+  components: {
+    TodasTarefas
+  },
+  data() {
+    return {};
+  },
+  computed: {
+    ...mapGetters("gerenciadortarefa", ["tarefasHoje", "proximasTarefas"])
+  },
+  filters: {
+    formataData(value) {
+      return date.formatDate(value, "MMM D");
     }
   }
+};
 </script>
 
 <style lang="scss">
-  .tarefas_hoje,
-  .proximas_tarefas {
+.tarefas_hoje,
+.proximas_tarefas {
+  /*.q-expansion-item--collapsed {*/
+  background: #f7f6fb;
+  border-radius: 32px;
+  /*}*/
 
-    /*.q-expansion-item--collapsed {*/
-      background: #f7f6fb;
-      border-radius: 32px;
-    /*}*/
+  .q-item--active {
+    background: rgba(0, 0, 0, 0.15);
+  }
 
-    .q-item--active {
-      background: rgba(0, 0, 0, 0.15);
+  .expansor_lista_tarefas .q-item {
+    border-radius: 32px !important;
+
+    .q-item__label {
+      font-size: 18px;
     }
+  }
 
-    .expansor_lista_tarefas .q-item {
-      border-radius: 32px !important;
-
-      .q-item__label {
-        font-size: 18px;
-      }
-    }
-
-    .detalhes_tarefa {
-      .q-item__label {
-        font-size: 15px !important;
-        color: #000;
-      }
-    }
-
-    .tarefa_completa {
+  .detalhes_tarefa {
+    .q-item__label {
+      font-size: 15px !important;
       color: #000;
-
-      .q-item__label {
-        font-size: 15px !important;
-        color: $grey-6;
-      }
-
     }
   }
 
-  .proximas_tarefas {
-    .fa-check-circle {
-      color: $grey-5;
+  .tarefa_completa {
+    color: #000;
+
+    .q-item__label {
+      font-size: 15px !important;
+      color: $grey-6;
     }
   }
+}
 
-  .btn_add_tarefa {
-    background: #017eff;
-    color: #fff;
-
-    i {
-      font-size: 18px !important;
-      background: #3b9cff;
-      padding: 20px;
-      border-radius: 50%;
-      margin-left: 2px;
-      left: 10px;
-    }
+.proximas_tarefas {
+  .fa-check-circle {
+    color: $grey-5;
   }
+}
 
-  @media (max-width: 600px)
-  {
-    .tarefa_avatares
-    {
-      display: none;
-    }
+.btn_add_tarefa {
+  background: #017eff;
+  color: #fff;
+
+  i {
+    font-size: 18px !important;
+    background: #3b9cff;
+    padding: 20px;
+    border-radius: 50%;
+    margin-left: 2px;
+    left: 10px;
   }
+}
+
+@media (max-width: 600px) {
+  .tarefa_avatares {
+    display: none;
+  }
+}
 </style>

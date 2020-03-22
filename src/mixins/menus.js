@@ -1,51 +1,54 @@
 export default [
   {
-    rotulo: 'Tarefas',
-    icone: 'img:statics/icons/checklist.png',
+    rotulo: "Tarefas",
+    icone: "img:statics/icons/checklist.png",
     menus: [
       {
-        rotulo: 'Todas',
-        icone: 'fas fa-tasks',
+        rotulo: "Todas",
+        icone: "fas fa-tasks",
         rota: {
-          name: 'tarefas'
+          name: "tarefas"
         }
       },
       {
-        rotulo: 'Pendentes',
-        icone: 'fas fa-hourglass-start',
+        rotulo: "Pendentes",
+        icone: "fas fa-hourglass-start",
         rota: {
-          name: 'tarefas',
+          name: "tarefas",
           params: {
-            visao: 'pendentes'
+            visao: "pendentes"
           }
         }
       },
       {
-        rotulo: 'Finalizadas',
-        icone: 'fas fa-check-double',
+        rotulo: "Finalizadas",
+        icone: "fas fa-check-double",
         rota: {
-          name: 'tarefas',
+          name: "tarefas",
           params: {
-            visao: 'finalizadas'
+            visao: "finalizadas"
           }
         }
       },
       {
-        rotulo: 'Arquivadas',
-        icone: 'fas fa-archive',
+        rotulo: "Arquivadas",
+        icone: "fas fa-archive",
         rota: {
-          name: 'tarefas',
+          name: "tarefas",
           params: {
-            visao: 'arquivadas'
+            visao: "arquivadas"
           }
         }
       }
     ]
   },
   {
-    rotulo: 'Projetos',
-    icone: 'img:statics/icons/project-management.png',
-    menus: [
+    rotulo: "Projetos",
+    icone: "img:statics/icons/project-management.png",
+    rota: {
+      name: "projetos"
+    }
+    /*menus: [
       {
         rotulo: 'Todas',
         icone: 'fas fa-project-diagram'
@@ -58,11 +61,11 @@ export default [
         rotulo: 'Finalizados',
         icone: 'fas fa-check-double'
       },
-    ]
+    ]*/
   },
   {
-    rotulo: 'Indicadores',
-    icone: 'img:statics/icons/laptop.png',
+    rotulo: "Indicadores",
+    icone: "img:statics/icons/laptop.png",
     menus: []
   }
 ];

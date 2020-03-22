@@ -4,6 +4,7 @@ import Vuex from "vuex";
 import autenticacao from "./autenticacao";
 import configuracao from "./configuracao";
 import gerenciadortarefa from "./tarefa";
+import projeto from "./projeto";
 
 Vue.use(Vuex);
 
@@ -21,7 +22,8 @@ export default function(/* { ssrContext } */) {
     modules: {
       autenticacao,
       configuracao,
-      gerenciadortarefa
+      gerenciadortarefa,
+      projeto
     },
 
     // enable strict mode (adds overhead!)

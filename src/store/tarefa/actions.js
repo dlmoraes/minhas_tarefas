@@ -1,4 +1,3 @@
-import { Notify } from "quasar";
 import request from "./../../libs/request";
 import { showOkMessage } from "./../../libs/messages";
 
@@ -216,7 +215,8 @@ export async function dbAdicionarEvidencia({ commit, dispatch }, payload) {
     })
       .then(response => {
         showOkMessage("Arquivo salvo com sucesso!");
-        dispatch("getTarefa", {});
+        dispatch("getTarefas", {});
+        commit("setTarefaPorId", {});
         resolve(response);
       })
       .catch(error => {

@@ -5,6 +5,7 @@
     :active="$route.name.toLowerCase() === rotulo.toLowerCase()"
     clickable
     tag="a"
+    :to="rota ? rota : ''"
   >
     <q-item-section avatar>
       <q-icon v-if="!icone.includes('img:')" :name="icone" />
@@ -63,7 +64,15 @@ import Item from "./Item";
 
 export default {
   name: "ItemMini",
-  props: ["classe", "classe_ativo", "ativo", "icone", "rotulo", "menus"],
+  props: [
+    "classe",
+    "classe_ativo",
+    "ativo",
+    "icone",
+    "rotulo",
+    "menus",
+    "rota"
+  ],
   components: {
     Item
   },
