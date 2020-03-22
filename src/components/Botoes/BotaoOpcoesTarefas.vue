@@ -56,7 +56,12 @@ export default {
       this.atualizacoes = {
         id: this.tarefa.id,
         updates: {
-          finalizado: !this.tarefa.finalizado
+          finalizado: !this.tarefa.finalizado,
+          data_fim: new Date()
+            .toLocaleDateString("pt-br")
+            .split("/")
+            .reverse()
+            .join("/")
         }
       };
       this.submitTarefa(this.atualizacoes);

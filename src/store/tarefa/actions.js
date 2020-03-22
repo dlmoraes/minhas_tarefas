@@ -118,8 +118,8 @@ export async function dbAdicionarTarefa({ dispatch }, payload) {
       .then(response => {
         setTimeout(() => {
           dispatch("getTarefas", {});
+          setTimeout(() => showOkMessage("Tarefa adicionada!"), 1000);
         }, 1000);
-        showOkMessage("Tarefa adicionada!");
         resolve(response);
       })
       .catch(error => {
@@ -128,7 +128,7 @@ export async function dbAdicionarTarefa({ dispatch }, payload) {
   });
 }
 
-export async function dbAtualizarTarefa({ state, dispatch }, payload) {
+export async function dbAtualizarTarefa({ commit, dispatch }, payload) {
   return await new Promise((resolve, reject) => {
     request({
       url: `/tarefas/${payload.id}/`,
@@ -136,13 +136,10 @@ export async function dbAtualizarTarefa({ state, dispatch }, payload) {
       data: payload.updates
     })
       .then(response => {
-        showOkMessage("Tarefa editada!");
-        if (Object.keys(state.tarefa).length > 0) {
-          dispatch("getTarefa", {});
-        } else {
-          dispatch("getTarefas", {});
-        }
+        dispatch("getTarefas", {});
+        commit("setTarefa", {});
         resolve(response);
+        setTimeout(() => showOkMessage("Tarefa editada!"), 1000);
       })
       .catch(error => {
         reject(error);
@@ -157,9 +154,9 @@ export async function dbDeleteTarefa({ dispatch }, payload) {
       method: "delete"
     })
       .then(response => {
-        showOkMessage("Tarefa removida!");
         dispatch("setTarefa", {});
         dispatch("getTarefas", {});
+        setTimeout(() => showOkMessage("Tarefa removida!"), 1000);
         resolve(response);
       })
       .catch(error => {
@@ -175,8 +172,8 @@ export async function dbDeleteComentario({ dispatch }, payload) {
       method: "delete"
     })
       .then(response => {
-        showOkMessage("Comentário removido!");
         dispatch("getComentarios", {});
+        setTimeout(() => showOkMessage("Comentário removido!"), 1000);
         resolve(response);
       })
       .catch(error => {
@@ -185,7 +182,7 @@ export async function dbDeleteComentario({ dispatch }, payload) {
   });
 }
 
-export async function dbAdicionarComentario({ dispatch }, payload) {
+export async function dbAdicionarComentario({ commit, dispatch }, payload) {
   return await new Promise((resolve, reject) => {
     request({
       url: `/tarefas/${payload.id}/comentarios/`,
@@ -193,8 +190,9 @@ export async function dbAdicionarComentario({ dispatch }, payload) {
       data: payload.comentario
     })
       .then(response => {
-        showOkMessage("Comentário adicionado!");
-        dispatch("getTarefa", {});
+        dispatch("getTarefas", {});
+        commit("setTarefaPorId", {});
+        setTimeout(() => showOkMessage("Comentário adicionado!"), 1000);
         resolve(response);
       })
       .catch(error => {
@@ -214,9 +212,9 @@ export async function dbAdicionarEvidencia({ commit, dispatch }, payload) {
       }
     })
       .then(response => {
-        showOkMessage("Arquivo salvo com sucesso!");
         dispatch("getTarefas", {});
         commit("setTarefaPorId", {});
+        setTimeout(() => showOkMessage("Arquivo salvo com sucesso!"), 1000);
         resolve(response);
       })
       .catch(error => {

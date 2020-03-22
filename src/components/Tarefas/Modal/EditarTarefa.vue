@@ -40,6 +40,38 @@
             </template>
           </q-input>
         </div>
+        <div class="row justify-center q-mb-xs q-mx-md">
+          <q-input
+            outlined
+            v-model="tarefaForm.data_fim"
+            label="Finalizado Em"
+            class="col"
+            @keypress="() => $refs.dataFimProxy.show()"
+            ref="dataFim"
+          >
+            <template v-slot:append>
+              <q-icon name="event" class="cursor-pointer">
+                <q-popup-proxy ref="dataFimProxy">
+                  <q-date
+                    v-model="tarefaForm.data_fim"
+                    mask="DD/MM/YYYY"
+                    @input="$emit('update:data', $event)"
+                    @click="() => $refs.dataFimProxy.hide()"
+                  />
+                </q-popup-proxy>
+              </q-icon>
+            </template>
+          </q-input>
+          <div class="q-pa-md">
+            <div class="q-gutter-sm">
+              <q-checkbox
+                v-model="finalizadoHoje"
+                label="Finalizado Hoje?"
+                @input="setFinalizadoHoje()"
+              />
+            </div>
+          </div>
+        </div>
         <div class="row justify-center q-mx-md">
           <q-select
             :disable="naoAtribuir"
@@ -100,59 +132,27 @@
 <script>
 import { date } from "quasar";
 import { mapActions, mapState } from "vuex";
+import mixinAdicionarEditarTarefa from "src/mixins/adicionar_editar_tarefa.js";
 
 export default {
   name: "EditarTarefa",
   props: ["tarefa"],
-  data() {
-    return {
-      atribuidoresOptions: [],
-      naoAtribuir: true,
-      tarefaForm: {
-        titulo: "",
-        data_vencimento: new Date().toLocaleDateString("pt-br"),
-        atribuidor: ""
-      }
-    };
-  },
-  computed: {
-    ...mapState("gerenciadortarefa", ["atribuidores"])
-  },
+  mixins: [mixinAdicionarEditarTarefa],
   methods: {
-    ...mapActions("gerenciadortarefa", ["getAtribuidores", "atualizarTarefa"]),
+    ...mapActions("gerenciadortarefa", ["atualizarTarefa"]),
     setTarefa() {
       this.tarefaForm.titulo = this.tarefa.titulo;
       this.tarefaForm.data_vencimento = date.formatDate(
         this.tarefa.data_vencimento,
         "DD/MM/YYYY"
       );
-      this.atribuidor = this.tarefa.atribuido_por_id;
-    },
-    async setOptions() {
-      await this.getAtribuidores();
-      this.atribuidoresOptions = this.atribuidores;
-    },
-    submitForm() {
-      this.$refs.titulo.validate();
-      this.$refs.dataVencimento.validate();
-
-      if (!this.$refs.titulo.hasError || !this.$refs.dataVencimento.hasError) {
-        let tarefa = {
-          titulo: this.tarefaForm.titulo,
-          data_vencimento: this.tarefaForm.data_vencimento
-            .split("/")
-            .reverse()
-            .join("/")
-        };
-
-        if (!this.naoAtribuir) {
-          this.$refs.atribuidor.validate();
-          if (!this.$refs.atribuidor.hasError) {
-            tarefa.atribuido_por_id = this.tarefaForm.atribuidor;
-          }
-        }
-
-        this.submitTarefa(tarefa);
+      this.tarefaForm.data_fim = date.formatDate(
+        this.tarefa.data_fim,
+        "DD/MM/YYYY"
+      );
+      if (this.tarefa.user_id !== this.tarefa.atribuidor.id) {
+        this.tarefaForm.atribuidor = this.tarefa.atribuidor.id;
+        this.naoAtribuir = !this.tarefa.atribuidor.id;
       }
     },
     submitTarefa(tarefa) {
@@ -164,11 +164,8 @@ export default {
     }
   },
   async created() {
+    this.setOptions();
     this.setTarefa();
-    //await this.setOptions();
   }
 };
 </script>
-
-<style scoped>
-</style>

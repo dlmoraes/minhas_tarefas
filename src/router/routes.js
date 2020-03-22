@@ -9,7 +9,12 @@ const routes = [
         name: "autenticacao"
       },
       {
-        path: ":visao?",
+        path: "",
+        component: () => import("pages/Home.vue"),
+        name: "dashboard"
+      },
+      {
+        path: "/tarefas:visao?",
         component: () => import("pages/Tarefas.vue"),
         name: "tarefas"
       },

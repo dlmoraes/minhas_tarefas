@@ -1,8 +1,8 @@
 <template>
   <q-item
-    :class="classe ? classe : 'item_menu'"
-    :active-class="classe_ativo ? classe_ativo : 'item_menu_ativo'"
-    :active="$route.name.toLowerCase() === rotulo.toLowerCase()"
+    class="item_menu"
+    :active-class="rotaAtual() ? 'item_menu_ativo' : ''"
+    :active="rotaAtual()"
     clickable
     tag="a"
     :to="rota ? rota : ''"
@@ -39,21 +39,11 @@
               <q-icon name="keyboard_arrow_right" size="18px" />
             </q-item-section>
           </q-item>
-          <Item
-            classe="submenu"
-            classe_ativo="submenu_ativo"
-            v-bind="menu"
-            v-else
-          />
+          <Item classe="submenu" classe_ativo="submenu_ativo" v-bind="menu" v-else />
         </div>
       </q-list>
     </q-menu>
-    <q-tooltip
-      content-class="bg-blue"
-      anchor="center right"
-      self="center left"
-      :offset="[10, 10]"
-    >
+    <q-tooltip content-class="bg-blue" anchor="center right" self="center left" :offset="[10, 10]">
       <strong>{{ rotulo }}</strong>
     </q-tooltip>
   </q-item>
@@ -83,6 +73,12 @@ export default {
           this.$route.params.visao.toLowerCase() === menu.rotulo.toLowerCase()
         );
       }
+    },
+    rotaAtual() {
+      console.log(this.$route.name.toLowerCase());
+      console.log(this.rotulo.toLowerCase());
+      console.log(this.$route.name.toLowerCase() === this.rotulo.toLowerCase());
+      return this.$route.name.toLowerCase() === this.rotulo.toLowerCase();
     }
   }
 };

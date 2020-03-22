@@ -91,7 +91,12 @@ export default {
       atualizacoes = {
         id: this.tarefa.id,
         updates: {
-          finalizado: !this.tarefa.finalizado
+          finalizado: !this.tarefa.finalizado,
+          data_fim: new Date()
+            .toLocaleDateString("pt-br")
+            .split("/")
+            .reverse()
+            .join("/")
         }
       };
       this.atualizarTarefa(atualizacoes);

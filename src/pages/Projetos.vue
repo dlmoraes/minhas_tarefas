@@ -38,18 +38,9 @@
       <div class="col">
         <q-card class="cartao_filtro">
           <q-card-section>
-            <q-icon
-              name="img:statics/icons/filter.png"
-              size="36px"
-              class="icone_titulo"
-            />
+            <q-icon name="img:statics/icons/filter.png" size="36px" class="icone_titulo" />
             <span class="titulo">Filtros:</span>
-            <q-btn-dropdown
-              icon="img:statics/icons/timer.png"
-              flat
-              label="Criado Em"
-              no-caps
-            >
+            <q-btn-dropdown icon="img:statics/icons/timer.png" flat label="Criado Em" no-caps>
               <q-list>
                 <q-item clickable v-close-popup>
                   <q-item-section>
@@ -84,12 +75,7 @@
                 </q-item>
               </q-list>
             </q-btn-dropdown>
-            <q-btn-dropdown
-              icon="img:statics/icons/priority.png"
-              flat
-              label="Prioridade"
-              no-caps
-            >
+            <q-btn-dropdown icon="img:statics/icons/priority.png" flat label="Prioridade" no-caps>
               <q-list>
                 <q-item clickable v-close-popup>
                   <q-item-section>
@@ -117,12 +103,7 @@
                 </q-item>
               </q-list>
             </q-btn-dropdown>
-            <q-btn-dropdown
-              icon="img:statics/icons/correct.png"
-              flat
-              label="Situação"
-              no-caps
-            >
+            <q-btn-dropdown icon="img:statics/icons/correct.png" flat label="Situação" no-caps>
               <q-list>
                 <q-item clickable v-close-popup>
                   <q-item-section>
@@ -150,74 +131,55 @@
                 </q-item>
               </q-list>
             </q-btn-dropdown>
+            {{$route.name.toLowerCase()}}
           </q-card-section>
         </q-card>
       </div>
     </div>
     <div class="row q-mb-md time">
       <div class="col-12">
-        <span class="titulo">
-          Participantes
-        </span>
+        <span class="titulo">Participantes</span>
       </div>
       <div class="row justify-start q-mt-md time">
         <div class="time_avatar">
           <q-avatar>
-            <img
-              src="https://api.adorable.io/avatars/400/260d105696cad1dffbb8c3d0484abbd3.png"
-            />
+            <img src="https://api.adorable.io/avatars/400/260d105696cad1dffbb8c3d0484abbd3.png" />
           </q-avatar>
         </div>
         <div class="time_avatar">
           <q-avatar>
-            <img
-              src="https://api.adorable.io/avatars/400/4ff455e846db64b4ef1e379a7255b618.png"
-            />
+            <img src="https://api.adorable.io/avatars/400/4ff455e846db64b4ef1e379a7255b618.png" />
           </q-avatar>
         </div>
         <div class="time_avatar">
           <q-avatar>
-            <img
-              src="https://api.adorable.io/avatars/400/9c690426929f64edcb5117be1ca3a636.png"
-            />
+            <img src="https://api.adorable.io/avatars/400/9c690426929f64edcb5117be1ca3a636.png" />
           </q-avatar>
         </div>
         <div class="time_avatar">
           <q-avatar>
-            <img
-              src="https://api.adorable.io/avatars/400/d0637046cfc0bc021458893129fc2a8b.png"
-            />
+            <img src="https://api.adorable.io/avatars/400/d0637046cfc0bc021458893129fc2a8b.png" />
           </q-avatar>
         </div>
         <div class="time_avatar">
           <q-avatar>
-            <img
-              src="https://api.adorable.io/avatars/400/4469e1b0130956bc3d022dad518b1026.png"
-            />
+            <img src="https://api.adorable.io/avatars/400/4469e1b0130956bc3d022dad518b1026.png" />
           </q-avatar>
         </div>
         <div class="time_avatar">
           <q-avatar>
-            <img
-              src="https://api.adorable.io/avatars/400/24aa74636ad3163ad52506db34f54b2b.png"
-            />
+            <img src="https://api.adorable.io/avatars/400/24aa74636ad3163ad52506db34f54b2b.png" />
           </q-avatar>
         </div>
         <div class="time_avatar">
           <q-avatar>
-            <img
-              src="https://api.adorable.io/avatars/400/c1277c1db86d6f27f34a7e5575746f49.png"
-            />
+            <img src="https://api.adorable.io/avatars/400/c1277c1db86d6f27f34a7e5575746f49.png" />
           </q-avatar>
         </div>
       </div>
     </div>
     <div class="row">
-      <CartaoGrade
-        v-for="projeto in projetos"
-        :key="projeto.id"
-        :projeto="projeto"
-      />
+      <CartaoGrade v-for="projeto in projetos" :key="projeto.id" :projeto="projeto" />
     </div>
   </q-page>
 </template>

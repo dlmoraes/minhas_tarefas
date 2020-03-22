@@ -10,7 +10,7 @@
   >
     <div class="menu_logo absolute-top">
       <q-avatar icon="fas fa-chart-line" />
-      <span>Meu Indicador</span>
+      <span>Minhas Tarefas</span>
     </div>
     <q-scroll-area class="menu_scroll">
       <q-list padding>

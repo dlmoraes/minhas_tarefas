@@ -1,5 +1,12 @@
 export default [
   {
+    rotulo: "Dashboard",
+    icone: "img:statics/icons/laptop.png",
+    rota: {
+      name: "dashboard"
+    }
+  },
+  {
     rotulo: "Tarefas",
     icone: "img:statics/icons/checklist.png",
     menus: [
@@ -48,24 +55,5 @@ export default [
     rota: {
       name: "projetos"
     }
-    /*menus: [
-      {
-        rotulo: 'Todas',
-        icone: 'fas fa-project-diagram'
-      },
-      {
-        rotulo: 'Pendentes',
-        icone: 'fas fa-hourglass-start'
-      },
-      {
-        rotulo: 'Finalizados',
-        icone: 'fas fa-check-double'
-      },
-    ]*/
-  },
-  {
-    rotulo: "Indicadores",
-    icone: "img:statics/icons/laptop.png",
-    menus: []
   }
 ];
