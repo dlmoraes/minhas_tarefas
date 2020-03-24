@@ -75,9 +75,6 @@ export default {
       }
     },
     rotaAtual() {
-      console.log(this.$route.name.toLowerCase());
-      console.log(this.rotulo.toLowerCase());
-      console.log(this.$route.name.toLowerCase() === this.rotulo.toLowerCase());
       return this.$route.name.toLowerCase() === this.rotulo.toLowerCase();
     }
   }
