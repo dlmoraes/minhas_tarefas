@@ -1,5 +1,5 @@
 <template>
-  <q-card class="cartao_filtro shadow-1">
+  <q-card class="cartao_filtro no-shadow">
     <q-markup-table class="tb_filtros" flat :v-ripple="false">
       <tbody>
       <tr>
@@ -98,6 +98,13 @@
             </q-list>
           </q-btn-dropdown>
         </td>
+        <td>
+          <q-input class="q-ml-md" outlined  v-model="procurar" dense label="Pesquisar">
+            <template v-slot:prepend>
+              <q-icon name="search" />
+            </template>
+          </q-input>
+        </td>
       </tr>
       </tbody>
     </q-markup-table>
@@ -106,7 +113,12 @@
 
 <script>
   export default {
-    name: "CartaoFiltros"
+    name: "CartaoFiltros",
+    data() {
+      return {
+        procurar: ""
+      }
+    }
   }
 </script>
 

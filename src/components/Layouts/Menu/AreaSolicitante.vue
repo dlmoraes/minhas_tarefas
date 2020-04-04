@@ -9,7 +9,7 @@
         </div>
         <div class="column">
           <q-item-label class="row justify-end">
-            <span class="rotulo col-12 text-grey-6">Criado por</span>
+            <span class="rotulo col-12">Criado por</span>
             <span class="valor col-12">{{ tarefa.atribuidor.username }}</span>
           </q-item-label>
         </div>
@@ -22,8 +22,8 @@
         </div>
         <div class="column">
           <q-item-label class="row justify-end">
-            <span class="rotulo col-12 text-grey-6">Vence</span>
-            <span class="valor col-12 text-black">{{ getTempoVencimento() }}</span>
+            <span class="rotulo col-12">Vence</span>
+            <span class="valor col-12">{{ getTempoVencimento() }}</span>
             <!--                <span class="col-12 text-black">Hoje 9am</span>-->
           </q-item-label>
         </div>
@@ -38,7 +38,3 @@
     props: ['tarefa', 'getTempoVencimento']
   }
 </script>
-
-<style scoped>
-
-</style>

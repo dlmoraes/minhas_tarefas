@@ -7,7 +7,7 @@
       <q-btn
         flat
         round
-        :color="tarefa.finalizado ? 'blue' : 'grey-7'"
+        :color="tarefa.finalizado ? 'blue' : 'grey-5'"
         :icon="tarefa.finalizado ? 'fas fa-check-circle' : 'far fa-check-circle'"
         @click="alterarFinalizacaoTarefa"
       />
@@ -18,11 +18,11 @@
     <q-item-section side class="q-mr-md">
       <div class="row">
         <div class="column justify-center">
-          <q-icon name="fas fa-calendar-alt" size="18px" class="q-mr-sm" color="grey-7" />
+          <q-icon name="fas fa-calendar-alt" size="18px" class="q-mr-sm" color="grey-5" />
         </div>
         <div class="column">
           <q-item-label
-            class="row justify-end text-grey-7"
+            class="row justify-end text-grey-5"
           >{{ tarefa.data_vencimento | formataData }}</q-item-label>
         </div>
       </div>
@@ -42,7 +42,7 @@
           flat
           round
           icon="fas fa-pen"
-          color="grey-7"
+          color="grey-5"
           size="10px"
         >
           <q-tooltip>Editar</q-tooltip>
@@ -52,7 +52,7 @@
           flat
           round
           :icon="$store.state.gerenciadortarefa.tarefa.id === tarefa.id ? 'fas fa-thumbtack fa-rotate-90' : 'fas fa-thumbtack'"
-          color="grey-7"
+          color="grey-5"
           size="10px"
         >
           <q-tooltip>Detalhes</q-tooltip>

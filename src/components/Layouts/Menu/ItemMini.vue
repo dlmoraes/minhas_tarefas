@@ -43,7 +43,7 @@
         </div>
       </q-list>
     </q-menu>
-    <q-tooltip content-class="bg-blue" anchor="center right" self="center left" :offset="[10, 10]">
+    <q-tooltip anchor="center right" self="center left" :offset="[10, 10]">
       <strong>{{ rotulo }}</strong>
     </q-tooltip>
   </q-item>

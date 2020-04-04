@@ -137,11 +137,12 @@ export default {
 };
 </script>
 
-<style lang="scss">
-.tarefas_hoje,
-.proximas_tarefas {
+<style lang="scss" scoped>
+/deep/ .tarefas_hoje,
+/deep/ .proximas_tarefas {
   /*.q-expansion-item--collapsed {*/
-  background: #f7f6fb;
+  /*background: #f7f6fb;*/
+  /*background: rgba(0, 0, 0, 0.1);*/
   border-radius: 32px;
   /*}*/
 
@@ -160,27 +161,27 @@ export default {
   .detalhes_tarefa {
     .q-item__label {
       font-size: 15px !important;
-      color: #000;
+      /*color: #000;*/
     }
   }
 
   .tarefa_completa {
-    color: #000;
+    color: $grey-8;
 
     .q-item__label {
       font-size: 15px !important;
-      color: $grey-6;
+      color: $grey-8;
     }
   }
 }
 
-.proximas_tarefas {
+/deep/ .proximas_tarefas {
   .fa-check-circle {
     color: $grey-5;
   }
 }
 
-.btn_add_tarefa {
+/deep/ .btn_add_tarefa {
   background: #017eff;
   color: #fff;
 

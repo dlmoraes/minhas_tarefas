@@ -15,16 +15,24 @@ export default {
   mounted() {
     //this.saveSettings();
     //this.getSettings();
+  },
+  created() {
+    this.$q.dark.set(true)
   }
 };
 </script>
 <style lang="scss">
 * {
-  font-family: "Montserrat", sans-serif;
+  font-family: "Open Sans", sans-serif;
+  /*font-family: "Montserrat", sans-serif;*/
 }
 
 body {
   font-size: 0.8125rem !important;
-  background: #fff;
+}
+
+body.body--dark {
+  color: #fff;
+  background: $dark;
 }
 </style>

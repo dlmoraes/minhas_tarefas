@@ -166,7 +166,7 @@ export default {
     margin-left: -30px;
     border: #258ffc solid 1px;
     border-radius: 100%;
-    color: white;
+    /*color: white;*/
     -webkit-animation: heartbeat 1.5s ease-in-out both;
     animation: heartbeat 1.5s ease-in-out both;
     z-index: 600;
@@ -182,7 +182,7 @@ export default {
     margin-left: -20px;
     border: #258ffc solid 1px;
     border-radius: 100%;
-    color: white;
+    /*color: white;*/
     -webkit-animation: heartbeat 1.5s ease-in-out infinite both;
     animation: heartbeat 1.5s ease-in-out infinite both;
     z-index: 600;
